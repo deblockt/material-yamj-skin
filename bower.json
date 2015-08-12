@@ -1,0 +1,9 @@
+{
+  "name": "easyAlgo",
+  "dependencies": {
+    "less": "latest",
+    "requirejs": "latest",
+    "angular-route": "latest"
+  }
+}
+ 
