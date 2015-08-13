@@ -3,7 +3,8 @@
   "dependencies": {
     "less": "latest",
     "requirejs": "latest",
-    "angular-route": "latest"
+    "angular-route": "latest",
+	"angular-material" : "latest"
   }
 }
  

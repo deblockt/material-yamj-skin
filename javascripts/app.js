@@ -3,15 +3,35 @@
 	'services/dependencyResolverFor',
 	'require', 
 	'angular',
-	'angularRoute'
+	'angularRoute',
+	'angularMaterial',
+	'angularAnimate'
 ],
 function (config, dependencyResolverFor, require) {
 	
 	var app = angular.module('app', 
         [
-            'ngRoute'
+            'ngRoute',
+			'ngMaterial'
         ]
     );
+	
+	app.controller('headerController', ['$scope', function ($scope) {
+		$scope.genreLibelle = null;
+		$scope.sort = null;
+		
+		this.openMenu = function($mdOpenMenu, ev) {
+			$mdOpenMenu(ev);
+		};
+		
+		this.closeMenu = function(genreLibelle) {
+			$scope.genreLibelle = genreLibelle;
+		};
+				
+		this.closeMenuTri = function(sort) {
+			$scope.sort = sort;
+		};
+	}]);
 	
 	/**
 	 * lazy routing configuration

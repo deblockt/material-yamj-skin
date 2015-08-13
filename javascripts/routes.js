@@ -5,6 +5,7 @@ define([], function()
         routes: {
             '/': {
                 controller : 'homeController',
+				templateUrl : 'home.html',
                 dependencies: [
                     'controllers/homeController'
                 ]

@@ -16,24 +16,38 @@ var config = {
 		// module shortcut
 		app : '../javascripts/app',
 		routes : '../javascripts/routes',
-		appDir : '../javascripts/'		
+		appDir : '../javascripts/',
+		// lib shortcut
+		angular : 'angular/angular',
+		angularRoute : 'angular-route/angular-route.min',
+		angularMaterial : 'angular-material/angular-material',
+		angularAnimate : 'angular-animate/angular-animate',
+		angularAria : 'angular-aria/angular-aria'
 	},
 	shim : {
-		'angular-ui-codemirror/ui-codemirror' : {
-			deps : [
-				'angular',
-				'codemirror/lib/codemirror',
-				'codemirror/mode/meta',
-				'codemirror/addon/mode/loadmode'
-			],
-			exports: 'codeMirrorAngular'
-		},
 		'angularRoute': {		
 			deps : [
 				'angular'
 			],
 			exports: 'angularRoute'
-		}		
+		},
+		'angularMaterial' : {
+			deps : [
+				'angular',
+				'angularAnimate',
+				'angularAria'
+			]
+		},
+		'angularAnimate' : {
+			deps : [
+				'angular'
+			]
+		},
+		'angularAria' : {
+			deps : [
+				'angular'
+			]
+		}
 	}
 };
 
@@ -44,9 +58,6 @@ if (testEnvironement) {
 //@endexclude
 	require.config(config);
 	require(['app'], function (app) {
-	  // create CodeMirror on window for correcte usage of ui.codemirror
-	  window.CodeMirror = require('codemirror/lib/codemirror');
-	  CodeMirror.modeURL = 'codemirror/mode/%N/%N';
 	  app.init();
 	});	
 //@exclude

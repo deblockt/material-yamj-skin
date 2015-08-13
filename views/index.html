@@ -13,6 +13,7 @@
 		<!-- endbuild -->
 		
 		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="../bower_components/angular-material/angular-material.css" rel="stylesheet">
 		
 		<script type="text/javascript" src="../bower_components/less/dist/less.min.js"> </script> 
 		
@@ -21,9 +22,65 @@
 	
 	</head>
 	<body>
+		<md-toolbar ng-controller="headerController as ctrl">
+		  <div class="md-toolbar-tools">
+			<md-button ng-class="{active : click == 'films'}" ng-click="click = 'films'">Films</md-button>
+			<md-button ng-class="{active : click == 'series'}" ng-click="click = 'series'">Series</md-button>
+			<md-menu>
+			  <md-button ng-click="ctrl.openMenu($mdOpenMenu, $event)">
+				Genre : {{genreLibelle}}
+			  </md-button>
+			  <md-menu-content width="3">
+				<md-menu-item>
+				  <md-button ng-click="ctrl.closeMenu(null)">
+					Aucun
+				  </md-button>
+				</md-menu-item>
+				<md-menu-item>
+				  <md-button ng-click="ctrl.closeMenu('Action')">
+					Action
+				  </md-button>
+				</md-menu-item>
+				<md-menu-item>
+				  <md-button ng-click="ctrl.closeMenu('Comédie')">
+					Comédie
+				  </md-button>
+				</md-menu-item>
+			  </md-menu-content>
+			</md-menu>
+			
+			<md-menu>
+			  <md-button class="" ng-click="ctrl.openMenu($mdOpenMenu, $event, $event)">
+				Tri : {{sort}}
+			  </md-button>
+			  <md-menu-content width="3">
+				<md-menu-item>
+				  <md-button ng-click="ctrl.closeMenuTri(null)">
+					Aucun
+				  </md-button>
+				</md-menu-item>
+				<md-menu-item>
+				  <md-button ng-click="ctrl.closeMenuTri('Croissant')">
+					Croissant
+				  </md-button>
+				</md-menu-item>
+				<md-menu-item>
+				  <md-button ng-click="ctrl.closeMenuTri('Décroissant')">
+					Décroissant
+				  </md-button>
+				</md-menu-item>
+			  </md-menu-content>
+			</md-menu>
+			
+			<span flex></span>
+			<h2>
+				<span>Rechercher</span>
+			</h2>
+		  </div>
+		</md-toolbar>
 		
-		<div class="content" ng-view >
+		<md-content class="content" ng-view >
 			<h1> Patientez chargement en cours... </h1>
-		</div>
+		</md-content>
 	</body>
 </html>
